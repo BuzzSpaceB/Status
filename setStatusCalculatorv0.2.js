@@ -37,7 +37,7 @@ exports.setStatusCalculator=function(setStatusCalculatorRequest)
 function ThreadsDepthAssessor()
 {
 
-    return document.treeSizeSum/document.numTrees
+   // return document.treeSizeSum/document.numTrees
 
 }
 
