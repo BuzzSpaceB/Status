@@ -7,5 +7,6 @@ console.log('Appraisal: '+appraisal);
 var lvl1="eh";
 var lvl2="funny";
 var lvl3="sides have left planet";
-var levels=createApp.createAppraisalLevels(lvl1,lvl2,lvl3);
+var levels=createApp.addAppraisalLevel(1, lvl1);
+levels=createApp.addAppraisalLevel(2, lvl2);
 console.log('Appraisal Levels: '+levels);

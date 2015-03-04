@@ -3,46 +3,24 @@
  */
  
  /**
- * Being able to get the Appraisal for later use.
- *
- * @param getAppraisalIdForRequest - get the needed appraisal Id
- * @param appraisals - database field for the appraisals
- */
- 
- /*  Not needed
- function getAppraisal(getAppraisalIdForRequest)
- {   
-	//getting referance to the db
-	return db.appraisals.find({appraisalId:getAppraisalIdForRequest});
- }
- */
- 
- /**
  * Being able to get the Appraisal Type for later use such as counting appraisals.
  *
  * @param getAppraisalIdForRequest - get the needed appraisal Id
  * @param appraisals - database field for the appraisals
  */
  
- function getAppraisalType(getAppraisalIdForRequest)
- {   
-	var type;
-	//geting the appraisal type
-	return db.appraisals.find({appraisalId:getAppraisalIdForRequest, appraisalType:type});
-	return type;
- }
  
- /**
- * Being able to get the Appraisal Id for later use such as counting appraisals.
- *
- * @param getAppraisalTypeForRequest - get the needed appraisal type
- * @param appraisals - database field for the appraisals
- */
- 
- function getAppraisalId(getAppraisalTypeForRequest)
- {   
-	var id;
-	//geting the appraisal id
-	return db.appraisals.find({appraisalId:id, appraisalType:getAppraisalTypeForRequest});
-	return id;
- }
+function getAppraisalIdForRequest(getAppraisalIdForRequest, callback)
+{	
+	Appraisal.findOne({"appraisal_id": getAppraisalIdForRequest}, function(err, appraisal)//result is stored in appraisal
+	{
+		if(err)
+		{
+			console.log("ERR: " + err);
+		}
+		else
+		{
+			callback(JSON.stringify(appraisal.status_value));//sending result to callback function in this case as a json string
+		}
+	});
+}

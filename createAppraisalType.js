@@ -1,7 +1,9 @@
 var jsonAppraisalLevels;
 var jsonAppraisal;
-var appraisalLevels;
+var jsonPeriod;
+var appraisalLevels=[];
 var appraisal;
+var period;
 
 /**
  * Convert textbox input into json strings for database insertion
@@ -17,21 +19,23 @@ exports.createAppraisal=function(_name, _description){
     return jsonAppraisal;
 };
 
-
 /**
  * Convert textbox input into json strings for database insertion
  *
- * @param  {String} _lvl1 - Name of level 1 appraisal
- * @param {String} _lvl2 - Name of level 2 appraisal
- * @param {String} _lvl3 - Name of level 3 appraisal
+ * {int} appraisalNumber - level of the appraisal (1, 2, etc.)
+ * {String} levelName - name of the appraisal level
  * @return {String}
  */
-exports.createAppraisalLevels=function(_lvl1, _lvl2, _lvl3){
-    appraisalLevels={level1: _lvl1, level2: _lvl2, level3:_lvl3};
+exports.addAppraisalLevel=function(appraisalNumber, levelName){
+    /*if (Object.keys(appraisalLevels)==0)
+        appraisalLevels={appraisalNumber: levelName};
+    else
+       appraisalLevels[appraisalNumber]=levelName;*/
+
+    appraisalLevels.push({appraisalNumber: levelName});
     jsonAppraisalLevels=JSON.stringify(appraisalLevels);
     return jsonAppraisalLevels;
 };
-
 
 /**
  * Convert image/icon to base64
@@ -40,7 +44,7 @@ exports.createAppraisalLevels=function(_lvl1, _lvl2, _lvl3){
  * @param {String} iconName - Name of the image being uploaded (ie. lvl1, notratedicon, etc)
  * @return {String} base64
  */
-exports.readNotRatedIcon=function(input, iconName) {
+exports.readIcon=function(input, iconName) {
     if (input.files && input.files[0]) {
         var FR = new FileReader();
         FR.readAsDataURL(input.files[0]);
@@ -51,24 +55,7 @@ exports.readNotRatedIcon=function(input, iconName) {
         }
         else
         {
-            if (iconName=="lvl1")
-            {
-                appraisalLevels["lvl1icon"]=FR;
-            }
-            else
-            {
-                if (iconName=="lvl2")
-                {
-                    appraisalLevels["lvl2icon"]=FR;
-                }
-                else
-                {
-                    if (iconName=="lvl3")
-                    {
-                        appraisalLevels["lvl3icon"]=FR;
-                    }
-                }
-            }
+            appraisalLevels[iconName]=FR;
         }
 
         jsonAppraisal=JSON.stringify(appraisal);
@@ -79,15 +66,28 @@ exports.readNotRatedIcon=function(input, iconName) {
 };
 
 /**
- * Convert image/icon to base64
+ * Specify an activation period for an appraisal
  *
- * @param  {String} dbURL - url of the database
- * @param  dbCollections - collections used
+ * @param active_from - date to start activation period
+ * @param active_to - date to end activation period
+ * @returns {String}
  */
-exports.store=function(dbURL, dbCollections){
-    var db=require('mongojs').connect(dbURL, dbCollections);
+exports.activePeriod=function(active_from, active_to){
+    period={"active_from": active_from, "active_to": active_to};
+    jsonPeriod=JSON.stringify(period);
+    return jsonPeriod;
+};
 
-    db.appraisals.save(jsonAppraisal, function(err, saved){
+/**
+ * Store json in database
+ *
+ * @param  db - db connection
+ */
+exports.store=function(db){
+
+  //  var mongoose=require('mongoose');
+
+    /*db.appraisals.save(jsonAppraisal, function(err, saved){
         if (err || !saved)
             console.log("Appraisal not added");
         else
@@ -99,5 +99,36 @@ exports.store=function(dbURL, dbCollections){
             console.log("Appraisal Levels not added");
         else
             console.log("Appraisal Levels added");
+    });
+
+    db.period.save(jsonPeriod, function(err, saved){
+        if (err || !saved)
+            console.log("Period not added");
+        else
+            console.log("Period added");
+    });*/
+
+    var appraisalThread=new Thread();
+    appraisalThread.name=appraisal["name"];
+    appraisalThread.description=appraisal["description"];
+    appraisalThread.not_rated_icon=appraisal["notratedicon"];
+    appraisalThread.active_from=period["active_from"];
+    appraisalThread.active_to=period["active_to"];
+
+    var size=Object.keys(appraisalLevels).length;
+    var count=1;
+    while (count<=size)
+    {
+        appraisalThread.appraisal_ratings.rating_name=appraisalLevels[count];
+        appraisalThread.appraisal_ratings.rating=count;
+        appraisalThread.rating.rating_Icon=appraisalLevels["lvl"+count+"icon"];
+        count++;
+    }
+
+    appraisalThread.save(function(err, save){
+       if (err || !saved)
+           console.log(err);
+        else
+            console.log("saved");
     });
 };
