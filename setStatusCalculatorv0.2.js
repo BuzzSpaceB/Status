@@ -10,15 +10,17 @@
 //WeightedSumAssessor
 //AppraisalsAssessor
 
-
+///this class is what the setStatusCalculator returns an object of.
+///it simply assigns a ProfileAssessor to the BuzzSpace which it has.
+setStatusCalculatorResult
+{
+    var ProfileAssessor;
+    var BuzzSpace;
+}
 
 function setStatusCalculator(setStatusCalculatorRequest)
 {
 
-    if(!setStatusCalculatorRequest.BuzzSpace.isOpen) //// if the buzzSpace is closed we cannot set a status calculator
-    {
-        throw new SpaceNotActiveException;
-    }
 
     var setStatusCalculatorResult=new setStatusCalculatorResult();// This is what we will return
 
