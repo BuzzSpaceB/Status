@@ -25,7 +25,19 @@ function ThreadsDepthAssessor(userId, callback)
     });
 }
 
+function NumPostsAssessor(userId, callback)
+{
+    Threads.count({"user_id":userId},function(err,count)
+        {
+            if(err)
+                console.lo("ERR: "+err);
+            else callback(userId, count);
+        }
 
+
+
+    )
+}
 
 
 exports.setStatusCalculator = function(setStatusCalculatorRequest)
@@ -36,4 +48,9 @@ exports.setStatusCalculator = function(setStatusCalculatorRequest)
     result.ProfileAssessor = setStatusCalculatorRequest.ProfileAssessor;//setting the profile assessor to whatever has been passed
 
     return result;
+};
+
+statusCalculatorRequest=function(callback)
+{
+  var profileAssessor;
 };
