@@ -1,7 +1,11 @@
-statusCalculatorRequest = function(callback) {
+statusCalculatorResult = function(callback) {
     var profileAssessor;
 };
 
+statusCalculatorRequest=function(callback)
+{
+    var profileAssessor;
+};
 
 function ThreadsDepthAssessor(userId, callback)
 {
@@ -45,7 +49,3 @@ exports.setStatusCalculator = function(setStatusCalculatorRequest)
     return result;
 };
 
-statusCalculatorRequest=function(callback)
-{
-  var profileAssessor;
-};
