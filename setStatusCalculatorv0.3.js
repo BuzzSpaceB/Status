@@ -1,8 +1,3 @@
-statusCalculatorResult = function(callback) {
-    var profileAssessor;
-};
-
-
 statusCalculatorRequest = function(callback) {
     var profileAssessor;
 };
