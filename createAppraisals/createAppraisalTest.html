@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="createAppraisalType.js"></script>
+    <title>Create Appraisal</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Create Appraisal</legend>
+            Name:<input type="text" id="appraisal" required autofocus/>
+            <br />
+            <br />
+            Description:<input type="text" id="description" required/>
+            <br />
+            <br />
+            Not Rated Icon: <input type="file" id="notRatedIcon"/>
+            <br/>
+            <button id="submit" name="submit">Submit</button>
+        </fieldset>
+    </form>
+    <br/>
+    <img id="nri" src=""/>
+    <div id="base"></div>
+    <br/>
+    <form>
+        <fieldset>
+            <legend>Appraisal Levels</legend>
+            Level 1: <input type="text" id="lvl1" required/>Level 1 Icon: <input type="file" id="lvl1icon"/>
+            <br/>
+            <br/>
+            Level 2: <input type="text" id="lvl2" required/>Level 2 Icon: <input type="file" id="lvl2icon"/>
+            <br/>
+            <br/>
+            Level 3: <input type="text" id="lvl3" required/>Level 3 Icon: <input type="file" id="lvl3icon"/>
+            <br/>
+            <br />
+            <button id="submit2" name="submit2">Submit</button>
+        </fieldset>
+    </form>
+</body>
+</html>
