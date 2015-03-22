@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+#popon {
+	display: none;
+	position: absolute;
+	width: 160px; height: 170px;
+	background-color: #666;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#popTable {
+   border-collapse: collapse;
+   margin-top: 0px;
+   margin-left: 0px;
+}
+#popTable td {
+   padding: 5px;
+}
+
+
+</style>
+</head>
+<body>
+<div id="popon"></div>
+<br>
+<br>
+<br>
+<br>
+<img src="Emoj/A.png" id="appraisalButton" onclick="popup();" height="50" width="50">
+<script type="text/javascript">
+
+var popupHide=true;
+
+function popup()
+{
+	var element = document.getElementById('appraisalButton');
+	var position = element.getBoundingClientRect();
+	var x = position.left;
+	var y = position.top;
+	
+
+	var tbl = document.createElement("table");
+	var pop = document.getElementById("popon");
+	pop.style.top=y+50+"px";
+	pop.style.left=x+50+"px";
+	
+	if(popupHide)
+	{
+		tbl.id = "popTable";
+		for ( var r = 0; r < 4; ++r )
+		{
+			var tr = tbl.insertRow(-1);
+			for ( var c = 0; c < 4; ++c )
+			{
+				var td1 = tr.insertCell(-1);
+				td1.innerHTML = "<img src='Emoj/"+((r*4)+c+1)+".png' alt=''height='30' width='30' onclick='updateAppraisal("+((r*4)+c+1)+");'>";
+			}
+		}
+		pop.appendChild(tbl);
+		pop.style.display = "block";
+		tbl.style.display = "block";
+		popupHide=false;
+	}
+	else
+	{
+		pop.innerHTML="";
+		pop.style.display = "none";
+		tbl.style.display = "none";
+		popupHide=true;
+	}
+}
+
+function updateAppraisal(type)
+{
+	//alert(type);
+	var pop = document.getElementById("appraisalButton");
+	pop.src="Emoj/"+type+".png";
+}
+
+</script>
+
+
+
+</ul>
+</body>
+</html>
