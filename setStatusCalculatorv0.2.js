@@ -12,7 +12,7 @@
 
 
 
-function setStatusCalculator(profileAssessor,buzzSpace)
+function setStatusCalculator(setStatusCalculatorRequest)
 {
 
 
@@ -24,47 +24,41 @@ function setStatusCalculator(profileAssessor,buzzSpace)
 
 
 
-    if(!buzzSpace.isOpen())
-    {
-        return; /// the buzzspace is closed and we cannot assess
-    }
 
-    else{
-
-        if(tda.isPrototypeOf(profileAssessor))
+        if(tda.isPrototypeOf(setStatusCalculatorRequest))
         {
-            var treeSize=profileAssessor.assess(); //invoke the ThreadDepthAssessor on the profile
+            var treeSize=setStatusCalculatorRequest.assessProfile(); //invoke the ThreadDepthAssessor on the profile
             return treeSize;
         }
 
-        else if(npa.isPrototypeOf(profileAssessor))
+        else if(npa.isPrototypeOf(setStatusCalculatorRequest))
         {
-            var numPosts=profileAssessor.assess(); //invoke the default NumPostsassessor on the profile
+            var numPosts=setStatusCalculatorRequest.assessProfile(); //invoke the default NumPostsassessor on the profile
             return numPosts;
         }
 
-        else if(ra.isPrototypeOf(profileAssessor))
+        else if(ra.isPrototypeOf(setStatusCalculatorRequest))
         {
-            var credit=profileAssessor.assess(); ////invoke the RoleAssessor on the profile
+            var credit=setStatusCalculatorRequest.assessProfile(); ////invoke the RoleAssessor on the profile
             return credit;
         }
 
-        else if(wsa.isPrototypeOf(profileAssessor))
+        else if(wsa.isPrototypeOf(setStatusCalculatorRequest))
         {
-            var weightedAverage=profileAssessor.assess(); //invoke the WeightedSumAssessor on the profile
+            var weightedAverage=setStatusCalculatorRequest.assessProfile(); //invoke the WeightedSumAssessor on the profile
             return weightedAverage;
         }
 
-        else if(aa.isPrototypeOf(profileAssessor))
+        else if(aa.isPrototypeOf(setStatusCalculatorRequest))
         {
-            var rating = profileAssessor.assess(); //invoke the AppraisalsAssessor on the profile
+            var rating = setStatusCalculatorRequest.assessProfile(); //invoke the AppraisalsAssessor on the profile
             return rating;
         }
 
         else throw InvalidprofileAssessorException; // throw an exception if the assessor is not one of these
 
-    }
+
 
 }
 
-var SetStatusCalculatorRequest=setStatusCalculator(profileAccessor);
+var SetStatusCalculatorResult=setStatusCalculator(setStatusCalculatorRequest);
