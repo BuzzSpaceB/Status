@@ -181,7 +181,7 @@ function updateAllStatusPoints(databaseName, collectionName, profileAssessor, as
 	{
 		if(assessorArray.length < 4)
 		{
-			print("\""+ assessorArray +"\"" + " has an invalid string size for assessor array");
+			console.error("\""+ assessorArray +"\"" + " has an invalid string size for assessor array");
 			return;
 		}
 		
