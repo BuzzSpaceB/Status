@@ -1,80 +1,86 @@
-var FR;
-var lvl1;
-var lvl2;
-var lvl3;
+/**
+ * Convert textbox input into json strings for database insertion
+ *
+ * @param  {String} _name - Name of appraisal
+ * @param {String} _description - Description of appraisal
+ * @return {String}
+ */
+exports.createAppraisal=function(_name, _description){
 
-$(document).ready(function(){
+    var appraisal={name: _name, description: _description};
+    return JSON.stringify(appraisal);
+}
 
-	//converts all input fields to json for insertion into database, including icons
-	//for creating appraisal
-    $("#submit").click(function () {
-        var createAppraisal={name: $("#appraisal").val(), description: $("#description").val(), notRatedIcon: FR};
-        JSON.stringify(createAppraisal);
-    });
-	
-	//converts all input fields to json for insertion into database, including icons
-	//for creating appraisal levels
-    $("#submit2").click(function(){
-       var appraisalLevels={level1: $("#lvl1").val(), level2: $("#lvl2").val(), level3: $("#lvl3").val(), level1icon: lvl1, level2icon: lvl2, level3icon: lvl3};
-        JSON.stringify(appraisalLevels);
-    });
 
-    $("#notRatedIcon").change(function(){
-        readNotRatedIcon(this);
-    });
+/**
+ * Convert textbox input into json strings for database insertion
+ *
+ * @param  {String} _lvl1 - Name of level 1 appraisal
+ * @param {String} _lvl2 - Name of level 2 appraisal
+ * @param {String} _lvl3 - Name of level 3 appraisal
+ * @return {String}
+ */
+exports.createAppraisalLevels=function(_lvl1, _lvl2, _lvl3){
+    var appraisalLevels={level1: _lvl1, level2: _lvl2, level3:_lvl3};
+    return JSON.stringify(appraisalLevels);
+}
 
-    $("#lvl1icon").change(function () {
-        readLevel1Icon(this);
-    })
-    $("#lvl2icon").change(function () {
-        readLevel2Icon(this);
-    })
-    $("#lvl3icon").change(function () {
-        readLevel3Icon(this);
-    })
-});
 
-//following functions convert images to base64
-function readNotRatedIcon(input) {
+/**
+ * Convert image/icon to base64
+ *
+ * @param  input - An uploaded image from html
+ * @return {String} base64
+ */
+exports.readNotRatedIcon=function(input) {
     if (input.files && input.files[0]) {
-        FR = new FileReader();
-        FR.onload = function (e) {
-            $('#nri').attr("src", e.target.result);
-            $('#base').text("Image string for json: "+e.target.result);
-        };
+        var FR = new FileReader();
         FR.readAsDataURL(input.files[0]);
+        return FR;
     }
 }
 
-function readLevel1Icon(input) {
+
+/**
+ * Convert image/icon to base64
+ *
+ * @param  input - An uploaded image from html
+ * @return {String} base64
+ */
+exports.readLevel1Icon=function(input) {
     if (input.files && input.files[0]) {
-        lvl1 = new FileReader();
-        lvl1.onload = function (e) {
-            $('#nri').attr("src", e.target.result);
-            $('#base').text("Image string for json: "+e.target.result);
-        };
+       var lvl1 = new FileReader();
         lvl1.readAsDataURL(input.files[0]);
+        return lvl1;
     }
 }
 
-function readLevel2Icon(input) {
+
+/**
+ * Convert image/icon to base64
+ *
+ * @param  input - An uploaded image from html
+ * @return {String} base64
+ */
+exports.readLevel2Icon=function(input) {
     if (input.files && input.files[0]) {
-        lvl2 = new FileReader();
-        lvl2.onload = function (e) {
-            $('#nri').attr("src", e.target.result);
-            $('#base').text("Image string for json: "+e.target.result);
-        };
+       var lvl2 = new FileReader();
         lvl2.readAsDataURL(input.files[0]);
+        return lvl2;
     }
 }
 
-function readLevel3Icon(input) {
+
+/**
+ * Convert image/icon to base64
+ *
+ * @param  input - An uploaded image from html
+ * @return {String} base64
+ */
+exports.readLevel3Icon=function(input) {
     if (input.files && input.files[0]) {
-        lvl3 = new FileReader();
-        lvl3.onload = function (e) {
-            $('#nri').attr("src", e.target.result);
-            $('#base').text("Image string for json: "+e.target.result);
-        };
+       var lvl3 = new FileReader();
         lvl3.readAsDataURL(input.files[0]);
+        return lvl3;
     }
 }
