@@ -1,0 +1,39 @@
+{
+  "name": "Status",
+  "description": "Functionality to assess a number of measures around individual buzz-space contributions",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BuzzSpaceB/Status"
+  },
+  "bugs": {
+    "url": "https://github.com/BuzzSpaceB/Status/issues"
+  },
+  "homepage": "https://github.com/BuzzSpaceB/Status",
+  "contributors": [
+    {
+      "name": "Taariq Ghoord",
+      "email": "u10132806@tuks.co.za"
+    },
+    {
+      "name": "Prenolan Govender",
+      "email": "u13102380@tuks.co.za"
+    },
+    {
+      "name": "Johann D Marx",
+      "email": "u12105202@tuks.co.za"
+    },
+    {
+      "name": "Andrew Parkes",
+      "email": "u12189139@tuks.co.za"
+    },
+    {
+      "name": Lelethu Zazaza",
+      "email": "u13028023@tuks.co.za"
+    }
+  ],
+  "dependencies": {
+      "express": "~4.12.2",
+      "mongoose": "^3.8.25",
+    }
+}
