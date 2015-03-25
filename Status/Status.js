@@ -10,7 +10,7 @@
 * @param {string} databaseName - The name of the databse
 * @param {string} collectionName - The name of the collection
 */
-function insertData(dbName, collName) 
+exports.insertData = function(dbName, collName) 
 {
 
   var coll = db.getSiblingDB(dbName).getCollection(collName);
@@ -31,7 +31,7 @@ function insertData(dbName, collName)
 * @param {string} userId - The user's id
 * @param {string} assessorArray - The leaf assessors to be used for determining the weighted assessment eg. "1010"  means add NumPostsAsessor and RoleAssessor
 */
-function updateStatusPointsForProfile(databaseName, collectionName, profileAssessor, userId, assessorArray)
+exports.updateStatusPointsForProfile = function(databaseName, collectionName, profileAssessor, userId, assessorArray)
 {
 	/** If the calculator is set to NumPostsAssessor the assessment is proportional to the number of posts a user has*/
 	if(profileAssessor === "NumPostsAssessor")
