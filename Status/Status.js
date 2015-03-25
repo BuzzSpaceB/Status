@@ -19,7 +19,7 @@ function insertData(dbName, collName)
     coll.insert({_id: 2, role: 1, statusPoints:0, numberOfPosts:1, treeSizeSum: 3,  numTrees: 1, appraisalTotal: 6});
     coll.insert({_id: 3, role: 1, statusPoints:10, numberOfPosts:3, treeSizeSum: 10,  numTrees: 1, appraisalTotal: 6});  
 
-    print(coll.count());
+   
 
 }
 
