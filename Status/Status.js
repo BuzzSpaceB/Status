@@ -132,7 +132,7 @@ exports.updateStatusPointsForProfile = function(databaseName, collectionName, pr
 * @param {string} profileAssessor - The name of the assessor
 * @param {string} assessorArray - The leaf assessors to be used for determining the weighted assessment eg. "1010"  means add NumPostsAsessor and RoleAssessor
 */
-function updateAllStatusPoints(databaseName, collectionName, profileAssessor, assessorArray)
+exports.updateAllStatusPoints = function(databaseName, collectionName, profileAssessor, assessorArray)
 {
     /** If the calculator is set to NumPostsAssessor the assessment is proportional to the number of posts a user has*/
 	if(profileAssessor === "NumPostsAssessor")
