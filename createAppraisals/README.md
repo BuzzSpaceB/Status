@@ -1,1 +1,0 @@
-Converts text input and icon input into JSON and base64 strings respectively

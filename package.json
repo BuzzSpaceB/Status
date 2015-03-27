@@ -1,8 +1,8 @@
 {
   "private": true,
-  "main": "index.js",
-  "name": "assessProfile",
-  "description": "Creates a interface to plug in the pluggable assessment functions",
+  "main": "test.js",
+  "name": "Status",
+  "description": "...",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -16,6 +16,22 @@
     {
       "name": "Johann Marx",
       "email": "u12105202@tuks.co.za"
+    },
+    {
+      "name": "Prenolan Govender",
+      "email": "u13102380@tuks.co.za"
+    },
+    {
+      "name": "Lelethu Zazaza",
+      "email": "u13028023@tuks.co.za"
+    },
+    {
+      "name": "Andrew Parkes",
+      "email": "andrewparkesgunnell@gmail.com"
+    },
+    {
+      "name": "Taariq Ghoord",
+      "email": "taariqghoord@gmail.com"
     }
   ],
   "dependencies": {
