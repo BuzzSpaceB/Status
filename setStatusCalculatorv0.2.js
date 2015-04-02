@@ -15,50 +15,17 @@
 function setStatusCalculator(setStatusCalculatorRequest)
 {
 
+    if(!setStatusCalculatorRequest.BuzzSpace.isOpen) //// if the buzzSpace is closed we cannot set a status calculator
+    {
+        throw new SpaceNotActiveException;
+    }
 
-    var tda= new ThreadsDepthAssessor();
-    var npa = new NumPostsAssessor();
-    var ra = new RoleAssessor();
-    var wsa= new WeightedSumAssessor();
-    var aa=new AppraisalsAssessor();
-
-
+    var setStatusCalculatorResult=new setStatusCalculatorResult();// This is what we will return
 
 
-        if(tda.isPrototypeOf(setStatusCalculatorRequest))
-        {
-            var treeSize=setStatusCalculatorRequest.assessProfile(); //invoke the ThreadDepthAssessor on the profile
-            return treeSize;
-        }
-
-        else if(npa.isPrototypeOf(setStatusCalculatorRequest))
-        {
-            var numPosts=setStatusCalculatorRequest.assessProfile(); //invoke the default NumPostsassessor on the profile
-            return numPosts;
-        }
-
-        else if(ra.isPrototypeOf(setStatusCalculatorRequest))
-        {
-            var credit=setStatusCalculatorRequest.assessProfile(); ////invoke the RoleAssessor on the profile
-            return credit;
-        }
-
-        else if(wsa.isPrototypeOf(setStatusCalculatorRequest))
-        {
-            var weightedAverage=setStatusCalculatorRequest.assessProfile(); //invoke the WeightedSumAssessor on the profile
-            return weightedAverage;
-        }
-
-        else if(aa.isPrototypeOf(setStatusCalculatorRequest))
-        {
-            var rating = setStatusCalculatorRequest.assessProfile(); //invoke the AppraisalsAssessor on the profile
-            return rating;
-        }
-
-        else throw InvalidprofileAssessorException; // throw an exception if the assessor is not one of these
-
-
+    setStatusCalculatorResult.ProfileAssessor=setStatusCalculatorRequest.ProfileAssessor;///setting the profile assessor to whatever has been passed
+    setStatusCalculatorResult.BuzzSpace=setStatusCalculatorRequest.BuzzSpace;
+    return setStatusCalculatorResult;
 
 }
 
-var SetStatusCalculatorResult=setStatusCalculator(setStatusCalculatorRequest);
