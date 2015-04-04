@@ -16,10 +16,10 @@ function assessProfile(assessProfileRequest)
 
     if (!currentAssessmentRequest)
     {
-        window.alert("No profile assessment request has been plugged in");
+        console.log("No profile assessment request has been plugged in");
         return;
     }
     else
-    assessmentValue = window[currentAssessmentRequest]();
+    assessmentValue = console[currentAssessmentRequest]();
     return assessmentValue;
 }
