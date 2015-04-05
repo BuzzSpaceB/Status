@@ -26,3 +26,23 @@ exports.setAppraisal=function(_userId, _postId, _appraisalId)
 		return JSON.stringify(setAppraisals);
 	}
 }
+
+exports.setAppraisal=function(_postId, _appraisalName)
+{
+   	Posts.findOne({"post_id": _postId}, function(err, post)
+   	{
+   		if(err)
+   		{
+   			console.log("ERR: " + err);
+   		}
+   		else
+   		{
+   			post.appraisal_id = _appraisalName;
+   			post.save(function(err)
+   			{
+   				if(err)
+   					console.log("ERR: " + err);
+   			});
+   		}
+   	});
+};/*

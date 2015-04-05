@@ -9,7 +9,6 @@
  * @param appraisals - database field for the appraisals
  */
  
- 
 function getAppraisalIdForRequest(getAppraisalIdForRequest, callback)
 {	
 	Appraisal.findOne({"appraisal_id": getAppraisalIdForRequest}, function(err, appraisal)//result is stored in appraisal
@@ -24,3 +23,24 @@ function getAppraisalIdForRequest(getAppraisalIdForRequest, callback)
 		}
 	});
 }
+
+ /**
+ * Being able to get the Appraisal for a specific post.
+ *
+ * @param _postId - get the needed appraisal for a post
+ */
+
+exports.getPostAppraisal=function(_postId, callback)
+{
+	Posts.findOne({"post_id": _postId}, function(err, post)
+   	{
+   		if(err)
+   		{
+   			console.log("ERR: " + err);
+   		}
+   		else
+   		{
+   			callback(post.appraisal_id);
+   		}
+   	});
+};
