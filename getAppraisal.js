@@ -9,12 +9,7 @@
  * @param appraisals - database field for the appraisals
  */
  
-<<<<<<< HEAD
- 
 exports.getAppraisalIdForRequest=function(getAppraisalIdForRequest, callback)
-=======
-function getAppraisalIdForRequest(getAppraisalIdForRequest, callback)
->>>>>>> a721387838034083ca45401080e27e1c9aae624a
 {	
 	Appraisal.findOne({"appraisal_id": getAppraisalIdForRequest}, function(err, appraisal)//result is stored in appraisal
 	{
