@@ -10,7 +10,7 @@
  */
 function assessProfile(assessProfileRequest)
 {
-    var currentAssessmentRequest = JSON.parse(assessProfileRequest);
+    var currentAssessmentRequest = assessProfileRequest;//JSON.parse(assessProfileRequest);
 
     var assessmentValue;
 
@@ -20,6 +20,7 @@ function assessProfile(assessProfileRequest)
         return;
     }
     else
-    assessmentValue = console[currentAssessmentRequest]();
+    assessmentValue = currentAssessmentRequest();
+//console[currentAssessmentRequest]();
     return assessmentValue;
 }
