@@ -9,21 +9,20 @@
  * @param userId - User adding the appraisal
  * @param postId - Post that is having the appraisal added too
  * @param appraisalId - Appraisal between the linking
- * @param appraisals - database field for the appraisals
  */
  
 exports.setAppraisal=function(_userId, _postId, _appraisalId)
 {
 	//linking a user a post and an appraisal
 	
-	if(db.appraisals.find({userId:_userId, postId:_postId})===null)//check if a user already has an appraisal for the specific post
+	if(Appraisal.find({"user_id":_userId, "post_id":_postId})===null)//check if a user already has an appraisal for the specific post
 	{
-		var setAppraisals={userId: _userId, postId: _postId, appraisalId:_appraisalId};
+		var setAppraisals={"user_id": _userId, "post_id": _postId, "appraisal_id":_appraisalId};
 		return JSON.stringify(setAppraisals);
 	}
 	else
 	{
-		var setAppraisals=db.appraisals.update({_userId: _userId}, postId:_postId, {$set:{appraisalId: _appraisalId}});
+		var setAppraisals=Appraisal.update({"user_id": _userId}, "post_id":_postId, {$set:{"appraisal_id": _appraisalId}});
 		return JSON.stringify(setAppraisals);
 	}
 }
