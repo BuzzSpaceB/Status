@@ -1,34 +1,36 @@
-/*
-* Inserts dummy data for database
-* Testing purposes only
-*/
-function c()
-{
-
-    db.users.insert({user_id: "u0", status_value:0, post_count:2});
-    db.users.insert({user_id: "u1", status_value:0, post_count:5});
-    db.users.insert({user_id: "u2", status_value:0, post_count:2});
-
-}
-
-/*
- * Dummy setStatusCaluculator
- * Testing purposes only
- */
-function setStatusCalculator()
-{
-    return 9;
-}
 /**
 *
 * Updates the status points of a specific user
 *
-* @param {string} user_id - The user's id
+* @param {string} user_id - A user's id
 *
 */
 exports.updateStatusPointsForProfile = function(user_id)
 {
-    db.users.update({user_id: user_id}, {$set:{"status_value":  setStatusCalculator()}});
+   try
+   	{
+   		var tempResult = Status.setStatusCalculator();
+   		Users.findOne({"user_id": user_id}, function(err, user)
+   		{
+   			if(err)
+   			{
+   				console.log("ERR: " + err);
+   			}
+   			else
+   			{
+   				user.status_value = tempResult;
+   				user.save(function(err)
+   				{
+   					if(err)
+   						console.log("ERR: " + err);
+   				});
+   			}
+   		});
+   	}
+   	catch(e)
+   	{
+   		console.log("Status Calculator error: " + e);
+   	}
 }
 
 /**
@@ -38,5 +40,31 @@ exports.updateStatusPointsForProfile = function(user_id)
 */
 exports.updateAllStatusPoints = function()
 {
-    db.users.update({}, {$set:{"status_value":  setStatusCalculator()}}, {multi: true});
+   try
+   	{
+   		var tempResult = Status.setStatusCalculator();
+   		Users.find({}, function(err, user)
+   		{
+   			if(err)
+   			{
+   				console.log("ERR: " + err);
+   			}
+   			else
+   			{
+   				user.forEach(function(auser)
+   				{
+   					auser.status_value = tempResult;
+   					auser.save(function(err)
+   					{
+   						if(err)
+   							console.log("ERR: " + err);
+   					});
+   				});
+   			}
+   		});
+   	}
+   	catch(e)
+   	{
+   		console.log("Status Calculator error: " + e);
+   	}
 }
