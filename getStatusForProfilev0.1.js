@@ -4,7 +4,7 @@
 
 var GetStatusForProfileRequest;
 
-function getStatusForProfile(getStatusForProfileRequest)
+exports.getStatusForProfile=function(getStatusForProfileRequest)
 {
 var stats;
     db.users.find({userId:getStatusForProfileRequest, status:stats})

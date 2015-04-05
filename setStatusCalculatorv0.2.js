@@ -18,7 +18,7 @@ setStatusCalculatorResult
     var BuzzSpace;
 }
 
-function setStatusCalculator(setStatusCalculatorRequest)
+exports.setStatusCalculator=function(setStatusCalculatorRequest)
 {
 
 

@@ -7,7 +7,7 @@
  * It will then be possibale to vote on each type of appraisal
  */
 
-function getAllAppraisalsForVote(callback)
+exports.getAllAppraisalsForVote=function(callback)
 {
 	Appraisal.find({}, function(err, appraisals)	//results are stored in appraisal
 	{

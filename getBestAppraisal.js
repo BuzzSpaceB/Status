@@ -8,7 +8,7 @@
  * @param postId - get the needed post Id
  */
 
-function getBestAppraisal(postId)
+exports.getBestAppraisal=function(postId)
 {
 	Appraisal.aggregate([
 	

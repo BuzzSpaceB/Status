@@ -4,7 +4,7 @@
 /**
  * This is a mock plugin to test functionality*
  */
-function mockPlugin()
+exports.mockPlugin=function()
 {
 
     return "Output from plugin";

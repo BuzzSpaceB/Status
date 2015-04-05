@@ -10,7 +10,7 @@
  */
  
  
-function getAppraisalIdForRequest(getAppraisalIdForRequest, callback)
+exports.getAppraisalIdForRequest=function(getAppraisalIdForRequest, callback)
 {	
 	Appraisal.findOne({"appraisal_id": getAppraisalIdForRequest}, function(err, appraisal)//result is stored in appraisal
 	{
