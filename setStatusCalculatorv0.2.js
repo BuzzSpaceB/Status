@@ -11,7 +11,7 @@
 //AppraisalsAssessor
 
 ///this class is what the setStatusCalculator returns an object of.
-///it simply assigns a ProfileAssessor to the BuzzSpace which it has.
+///This simply assigns a ProfileAssessor to the BuzzSpace which it has.
 setStatusCalculatorResult
 {
     var ProfileAssessor;
