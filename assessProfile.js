@@ -8,7 +8,11 @@
  * each implementing the ProfileAssessor interface.*
  * @param assessProfileRequest - get required assessor request - which is a pluggable Profile Assessor
  */
+<<<<<<< .merge_file_1NssC2
 exports.assessProfile=function(assessProfileRequest)
+=======
+export.assessProfile=function(assessProfileRequest)
+>>>>>>> .merge_file_9aWJfK
 {
     var currentAssessmentRequest = assessProfileRequest;//JSON.parse(assessProfileRequest);
 
