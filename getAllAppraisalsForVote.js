@@ -19,7 +19,7 @@ function getAllAppraisalsForVote(callback)
 		{
 			appraisals.forEach(function(aappraisal)	//each record in appraisals is used as aappraisal
 			{
-				callback(aappraisals);//sends each appraisal to the callback function
+				callback(aappraisal);//sends each appraisal to the callback function
 			});
 		}
 	});
