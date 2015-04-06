@@ -27,12 +27,8 @@ exports.createAppraisal=function(_name, _description){
  * @return {String}
  */
 exports.addAppraisalLevel=function(appraisalNumber, levelName){
-    /*if (Object.keys(appraisalLevels)==0)
-        appraisalLevels={appraisalNumber: levelName};
-    else
-       appraisalLevels[appraisalNumber]=levelName;*/
 
-    appraisalLevels.push({appraisalNumber: levelName});
+    appraisalLevels.push({rating: appraisalNumber, rating_name: levelName});
     jsonAppraisalLevels=JSON.stringify(appraisalLevels);
     return jsonAppraisalLevels;
 };
@@ -84,29 +80,6 @@ exports.activePeriod=function(active_from, active_to){
  * 
  */
 exports.store=function(){
-
-  //  var mongoose=require('mongoose');
-
-    /*db.appraisals.save(jsonAppraisal, function(err, saved){
-        if (err || !saved)
-            console.log("Appraisal not added");
-        else
-            console.log("Appraisal added");
-    });
-
-    db.appraisallevels.save(jsonAppraisalLevels, function(err, saved){
-        if (err || !saved)
-            console.log("Appraisal Levels not added");
-        else
-            console.log("Appraisal Levels added");
-    });
-
-    db.period.save(jsonPeriod, function(err, saved){
-        if (err || !saved)
-            console.log("Period not added");
-        else
-            console.log("Period added");
-    });*/
 	
 	var Appraisal=require('../models/appraisal');
 
@@ -117,15 +90,8 @@ exports.store=function(){
     newAppraisal.active_from=period["active_from"];
     newAppraisal.active_to=period["active_to"];
 
-    var size=Object.keys(appraisalLevels).length;
-    var count=1;
-    while (count<=size)
-    {
-        newAppraisal.appraisal_ratings.rating_name=appraisalLevels[count];
-        newAppraisal.appraisal_ratings.rating=count;
-        newAppraisal.rating.rating_Icon=appraisalLevels["lvl"+count+"icon"];
-        count++;
-    }
+    var jsonLevels=JSON.parse(levels);
+	newAppraisal.appraisal_ratings=jsonLevels;
 
     newAppraisal.save(function(err){
        if (err)
