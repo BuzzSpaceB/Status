@@ -107,25 +107,27 @@ exports.store=function(db){
         else
             console.log("Period added");
     });*/
+	
+	var Appraisal=require('../models/appraisal');
 
-    var appraisalThread=new Thread();
-    appraisalThread.name=appraisal["name"];
-    appraisalThread.description=appraisal["description"];
-    appraisalThread.not_rated_icon=appraisal["notratedicon"];
-    appraisalThread.active_from=period["active_from"];
-    appraisalThread.active_to=period["active_to"];
+    var newAppraisal=new Appraisal();
+    newAppraisal.name=appraisal["name"];
+    newAppraisal.description=appraisal["description"];
+    newAppraisal.not_rated_icon=appraisal["notratedicon"];
+    newAppraisal.active_from=period["active_from"];
+    newAppraisal.active_to=period["active_to"];
 
     var size=Object.keys(appraisalLevels).length;
     var count=1;
     while (count<=size)
     {
-        appraisalThread.appraisal_ratings.rating_name=appraisalLevels[count];
-        appraisalThread.appraisal_ratings.rating=count;
-        appraisalThread.rating.rating_Icon=appraisalLevels["lvl"+count+"icon"];
+        newAppraisal.appraisal_ratings.rating_name=appraisalLevels[count];
+        newAppraisal.appraisal_ratings.rating=count;
+        newAppraisal.rating.rating_Icon=appraisalLevels["lvl"+count+"icon"];
         count++;
     }
 
-    appraisalThread.save(function(err, save){
+    newAppraisal.save(function(err, save){
        if (err || !saved)
            console.log(err);
         else
