@@ -81,9 +81,9 @@ exports.activePeriod=function(active_from, active_to){
 /**
  * Store json in database
  *
- * @param  db - db connection
+ * 
  */
-exports.store=function(db){
+exports.store=function(){
 
   //  var mongoose=require('mongoose');
 
@@ -127,8 +127,8 @@ exports.store=function(db){
         count++;
     }
 
-    newAppraisal.save(function(err, save){
-       if (err || !saved)
+    newAppraisal.save(function(err){
+       if (err)
            console.log(err);
         else
             console.log("saved");
