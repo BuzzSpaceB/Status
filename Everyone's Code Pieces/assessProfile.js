@@ -9,7 +9,7 @@
  * @param assessProfileRequest - get required assessor request - which is a pluggable Profile Assessor
  */
 
-exports.assessProfile=function(assessProfileRequest)
+exports.assessProfile=function(assessProfileRequest, user, callback)
 {
     var currentAssessmentRequest = assessProfileRequest;//JSON.parse(assessProfileRequest);
 
@@ -21,7 +21,8 @@ exports.assessProfile=function(assessProfileRequest)
         return;
     }
     else
-    assessmentValue = currentAssessmentRequest();
+    currentAssessmentRequest(user, callback);
+    //assessmentValue = currentAssessmentRequest();
 //console[currentAssessmentRequest]();
-    return assessmentValue;
+    //return assessmentValue;
 }
