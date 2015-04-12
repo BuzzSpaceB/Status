@@ -1,7 +1,7 @@
-var Appraisal = require('./models/appraisal');
-var Users = require('./models/user');
-var Posts = require('./models/post');
-var Threads = require('./models/thread');
+var Appraisal = ds.models.appraisal;
+var Users = ds.models.user;
+var Posts = ds.models.post;
+var Threads = ds.models.thread;
 var jsonAppraisalLevels;
 var jsonAppraisal;
 var jsonPeriod;
