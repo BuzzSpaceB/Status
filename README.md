@@ -1,5 +1,7 @@
 # Status
-Functionality to assess a number of measures around individual buzz-space contributions, to use these to calculate a BuzzSpace status for a profile and to restrict access to system functionality based on user status and user role.
+Functionality to assess a number of measures around individual buzz-space contributions,
+ to use these to calculate a BuzzSpace status for a profile and to restrict access to 
+ system functionality based on user status and user role.
 
 This Git Repository will be used to collaborate on the Buzz Space mini project.
 
@@ -15,6 +17,10 @@ Converts text input and icon input into JSON and base64 strings respectively
 Status:
 Updates the user status points
 
+These functions are made in such a way that the coding can just be copy and pasted into the software, and just be called from the required functions.
+
+Together with what is described above,  we have a comment above each function in the index.js file,
+that describes exactly what each function does.
 
 
 ## Project time-line
