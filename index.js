@@ -1,3 +1,6 @@
+var mongoose = require('mongoose'), ds = require('DatabaseStuff');
+ds.init(mongoose);
+
 var Appraisal = ds.models.appraisal;
 var Users = ds.models.user;
 var Posts = ds.models.post;
